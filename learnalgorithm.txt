@@ -1,2 +1,55 @@
 学习心得：
-1、
+,,,
+问题
+定义一个20*5的二维数组，用来存储某班级20位学员的5门课的成绩；这5门课按存储顺序依次为：core C++，coreJava，Servlet，JSP和EJB。
+（1）循环给二维数组的每一个元素赋0~100之间的随机整数。
+（2）按照列表的方式输出这些学员的每门课程的成绩。
+（3）要求编写程序求每个学员的总分，将其保留在另外一个一维数组中。
+（4）要求编写程序求所有学员的某门课程的平均分。
+,,,
+
+1、链表推导式(List Comprehension)：[xxx for yyy in zzz]
+	XXX表示链表，yyy限定XXX中参数，zzz表示yyy的循环范围
+	列表推导式：variable = [out_exp_res for out_exp in input_list if out_exp == 2]
+							out_exp_res：列表生成元素表达式，可以是有返回值的函数。
+							for out_exp in input_list：迭代input_list将out_exp传入out_exp_res表达式中。
+							if out_exp == 2：根据条件过滤哪些值可以。
+	
+	
+	示例:(1)、noprimes = [j for i in range(2, 8) for j in range(i * 2, 100, i)]#for i in range（2，8）是外循环，for j in range （i*2，100，i）是内循环。
+	     最后将每一次循环结果输出到noprimes中。
+			eg：noprimes = [j for i in range(2, 8) for j in range(i*2, 100, i)]
+				primes = [x for x in range(2, 100) if x not in noprimes]
+				print(primes)#输出2-100直接的质数
+				
+				第二种获取质数的方法：
+				from math import sqrt
+				n = 100
+				sqrt_n = int(sqrt(n))
+				no_primes = {j for i in range(2, sqrt_n+1) for j in range(i*2, n, i)}#大括号{}表示集合[]表示列表
+				primes = {i for i in range(2, n) if i not in no_primes}
+				print(primes)
+		(2)、[[score_list[j][i] for j in range(course_num)] for i in range(student_num)]#for i in range(course_num)是外循环，[score_list[j][i] for j in range(course_num)]是内循环
+		
+		(3)、[x*y for x in range(1,5) if x > 2 for y in range(1,4) if y < 3]#各语句之间是嵌套关系，左边第二个语句是最外层，依次往右进一层，左边第一条语句是最后一层
+			执行顺序：
+				for x in range(1,5)
+					if x > 2
+						for y in range(1,4)
+							if y < 3
+								x*y
+								
+2、if __name__ =="__mian__": #如果模块是被直接运行的，则代码块被运行，如果模块是被导入的，则代码块不被运行。
+
+3、from __future__ import division #这样的做法的作用就是将新版本的特性引进当前版本中，也就是说我们可以在当前版本使用新版本的一些特性。
+		eg:# python 2.x
+		     5/2
+		    >>> 2
+ 		    from __future__ import division(除法特性)
+		    5/2
+			>>> 2.5
+	其他特性：print_function	#print 特性
+	
+ 4、def function(p1,p2,p3):
+		return(r1,r2,r3)
+	
