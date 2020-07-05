@@ -16,4 +16,4 @@ def ahead_one():
     return a
 
 if __name__ =="__main__":
-    print ahead_one()
+    print (ahead_one())
