@@ -18,13 +18,13 @@ def make_score(num):
 def less_average(score):
     num = len(score)
     sum_score = sum(score)
-    ave_num = sum_score/float(num)
+    ave_num = sum_score/(num)
     less_ave = [i for i in score if i<ave_num]
     return (ave_num,len(less_ave))
 
 if __name__=="__main__":
     score = make_score(40)
     average_num,less_num = less_average(score)
-    print 'the score of average is:',average_num
-    print "the number of less average is:",less_num
-    print "the every score is[from big to small]:",sorted(score,reverse=True)
+    print ('the score of average is:',average_num)
+    print ("the number of less average is:",less_num)
+    print ("the every score is[from big to small]:",sorted(score,reverse=True))

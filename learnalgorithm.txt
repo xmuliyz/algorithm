@@ -17,7 +17,7 @@
 							if out_exp == 2：根据条件过滤哪些值可以。
 	
 	
-	示例:(1)、noprimes = [j for i in range(2, 8) for j in range(i * 2, 100, i)]#for i in range（2，8）是外循环，for j in range （i*2，100，i）是内循环。
+	示例:(1)、noprimes = [j for i in range(2, 8) for j in range(i * 2, 100, i)]  #for i in range（2，8）是外循环，for j in range （i*2，100，i）是内循环。
 	     最后将每一次循环结果输出到noprimes中。
 			eg：noprimes = [j for i in range(2, 8) for j in range(i*2, 100, i)]
 				primes = [x for x in range(2, 100) if x not in noprimes]
@@ -30,7 +30,7 @@
 				no_primes = {j for i in range(2, sqrt_n+1) for j in range(i*2, n, i)}#大括号{}表示集合[]表示列表
 				primes = {i for i in range(2, n) if i not in no_primes}
 				print(primes)
-		(2)、[[score_list[j][i] for j in range(course_num)] for i in range(student_num)]#for i in range(course_num)是外循环，[score_list[j][i] for j in range(course_num)]是内循环
+		(2)、[[score_list[j][i] for j in range(course_num)] for i in range(student_num)]  #for i in range(course_num)是外循环，[score_list[j][i] for j in range(course_num)]是内循环
 		
 		(3)、[x*y for x in range(1,5) if x > 2 for y in range(1,4) if y < 3]#各语句之间是嵌套关系，左边第二个语句是最外层，依次往右进一层，左边第一条语句是最后一层
 			执行顺序：
@@ -71,4 +71,37 @@ git
 2、.append函数：#在列表末尾添加元素
    .insert(x,'')#在列表的任何位置添加元素
 
-
+三、
+"""
+问题：
+定义一个int型的一维数组，包含40个元素，用来存储每个学员的成绩，循环产生40个0~100之间的随机整数，
+(1)将它们存储到一维数组中，然后统计成绩低于平均分的学员的人数，并输出出来。
+(2)将这40个成绩按照从高到低的顺序输出出来。
+"""
+1、sort()和sorted()
+	sort()只适用于列表，且其直接修改原列表；
+	sorted()适用于任何可迭代得列表，返回一个新的列表；
+2、sorted()得语法格式。
+	sorted(L,cmd=lamda,key=lamda x:x());其中L为可迭代对象，cmd比较函数，key关键函数。
+	示例：
+	class Student:
+    		def __init__(self, name, grade, age):
+        		self.name = name
+        		self.grade = grade
+        		self.age = age
+   		 def __repr__(self):
+        		return repr((self.name, self.grade, self.age))
+     student_objects = [
+    		 Student('john', 'A', 15),
+   		 Student('jane', 'B', 12),
+   		 Student('dave', 'B', 10),
+]
+	sorted(student_objects, key=lambda student: student.age)   # sort by age
+	[('dave', 'B', 10), ('jane', 'B', 12), ('john', 'A', 15)]
+还可以用operate函数模块：itemgetter()、attrgetter()、 methodcaller()
+	from operator import itemgetter, attrgetter
+	sorted(student_tuples, key=itemgetter(2)) #按年龄排
+	sorted(student_objects, key=attrgetter('age')) #按年龄排
+	sorted(student_tuples, key=itemgetter(2), reverse=True) #升降序，reverse=True为降序，reverse=False为升序
+	
+	
